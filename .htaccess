@@ -1,0 +1,21 @@
+ErrorDocument 404 /codexlab/404.php
+
+ErrorDocument 403 /codexlab/404.php
+
+RewriteEngine On
+AuthType Basic
+AuthName "Restricted Content"
+
+
+<FilesMatch "\.(py)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+<FilesMatch "layout\images\back\.(jpg|jpeg|png|gif|svg)$">
+  Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
