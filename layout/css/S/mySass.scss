@@ -1073,6 +1073,7 @@ $btn_Shadow:0 7px 5px -1px #777 !important;
             z-index: 1;
             transition: all .5s ease-in-out !important;
             .overlay{
+              position: absolute;
                 background-color: #fff9;
                 z-index: 0;
             }

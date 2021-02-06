@@ -414,7 +414,7 @@ svg {
   display: block; }
 
 .overlay {
-  position: fixed !important;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -958,6 +958,7 @@ a[data-toggle="collapse"] {
   z-index: 1;
   transition: all .5s ease-in-out !important; }
   .category .offer .overlay {
+    position: absolute;
     background-color: #fff9;
     z-index: 0; }
   .category .offer .shape {

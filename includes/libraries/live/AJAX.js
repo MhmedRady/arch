@@ -11,6 +11,8 @@ var uPLd  = 'includes/libraries/Up/upload_file?addLoad=';
 
   /************* START [ CHECK LOGIN USERNAME NAME ]  ************/
 
+
+
 var userin = $('#user-log'),
 
     erro=true;
@@ -40,13 +42,6 @@ var userin = $('#user-log'),
     if (userVal!="") {
       checkdata("#exampleInputName","#NameCheckHelp","logForm","logName");
     }
-
-        if ($("#NameHelp").hasClass("checkError")) {
-          console.log("has class checkError");
-        }else {
-          console.log("no class checkError");
-        }
-
   });
 
   function goArch(id){
