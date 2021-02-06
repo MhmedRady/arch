@@ -13,25 +13,29 @@
       else:
 
 
-    $getLOG = isset($_GET["log"]) && $_GET["log"] !=null ? $_GET["log"] :"";
+        $getLOG = isset($_GET["log"]) && $_GET["log"] !=null ? $_GET["log"] :"";
 
         $pageTitle = $getLOG =="regest"?"اضافة مستخدم":"تسجيـل الدخول";
         $body      = 1;
         $noNavbar  = 0;
         $StartUp   = 1;
-        include 'inc.php';
+        require 'inc.php';
 
     if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         if (isset($_POST["LOGForm"])) {
           echo "LOGForm";
           $user = $_POST["logName"];
-          $pass = sha1($_POST["logPass"]);
+          $pass = GENFun_Class\Fun_Class::HashPass($_POST["logPass"]);
 
           $NamerowCount = cHECKexist("ID","users","WHERE Name LIKE ?","",$user);
           $PassCheck    = cHECKexist("ID","users","WHERE Name LIKE ?","AND Pass LIKE ?",$user,$pass);
-          $CheckData    = getOne("*","users","WHERE Name LIKE ?","AND Pass LIKE '%$pass%'",$user);
-
+          $CheckData    = GENFun_Class\Fun_Class::getOne("*","users","WHERE Name LIKE ?","AND Pass LIKE '%$pass%'",$user);
+          if($PassCheck){
+            echo "good pass";
+          }else{
+            echo "bad pass";
+          }
           print_r($CheckData);
 
           $CheckBlock = $CheckData[0]["Block"];
@@ -66,7 +70,9 @@
         }
     }
 
-?>
+  ?>
+
+
 
   <section class="logphp">
     <div class="overlay"></div>
@@ -123,14 +129,14 @@
               <div class="form-group user_input">
                <label for="exampleInputName">اسم المستخدم</label>
                <i data-feather="user" class="user_svg"></i>
-               <input type="text" class="form-control" id="exampleInputName" name="logName" aria-describedby="emailHelp" autocomplete="on" value="<?php if(isset($user)){echo $user;} ?>" placeholder="ادخل اسم المستخدم">
+               <input type="text" class="form-control checkError" id="exampleInputName" name="logName" aria-describedby="emailHelp" autocomplete="on" value="<?php if(isset($user)){echo $user;} ?>" placeholder="ادخل اسم المستخدم">
                <?php if(isset($eRRorName) && count($eRRorName)>0){
                  ?>
                  <span id="NameHelp" class="form-text text-muted error logPostNErr"><?php echo $eRRorName[0] ?></span>
                  <?php
                }else {
                  ?>
-                 <span id="NameHelp" class="form-text text-muted error checkError"></span>
+                 <span id="NameHelp" class="form-text text-muted error"></span>
                  <?php
                } ?>
                <span id="NameCheckHelp" class="form-text text-muted error"></span>

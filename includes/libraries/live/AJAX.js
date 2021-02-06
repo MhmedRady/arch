@@ -77,7 +77,7 @@ var userin = $('#user-log'),
     });
 
   }
-  $("#_Search").on("keydown",function(){
+  $("#_Search").keypress(function(){
     var len = $(this).val().length;
     if (len>1) {
       checkdata("#_Search","#out_Search","_S","Fixed_Search");

@@ -34,7 +34,7 @@ if ($get_Cat == "NewStockC") {
 </div>
 <?php
 
-$getAll = getVal("*","stocks");
+$getAll = GENFun_Class\Fun_Class::getVal("*","stocks");
 
  ?>
     <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
@@ -121,7 +121,7 @@ $getAll = getVal("*","stocks");
 
             <div class="col-xl-5">
               <?php
-                myFormInput(
+                GENFun_Class\Fun_Class::myFormInput(
                   "اسم الشركة",
                   "CompName",
                   "CompNameERR",
@@ -133,7 +133,7 @@ $getAll = getVal("*","stocks");
                <div class="row">
                  <div class="col-xl-6 col-lg-6 col-md-6">
                      <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        "رئيس مجلس الإدارة",
                        "ownName",
                        "ownNameERR",
@@ -145,7 +145,7 @@ $getAll = getVal("*","stocks");
                  </div>
                  <div class="col-xl-6 col-lg-6 col-md-6">
                    <?php
-                   myFormInput(
+                   GENFun_Class\Fun_Class::myFormInput(
                      "أمين السر",
                      "aminName",
                      "aminNameERR",
@@ -160,7 +160,7 @@ $getAll = getVal("*","stocks");
                <div class="row">
                  <div class="col-xl-6 col-lg-6 col-md-6">
                      <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        "رقم البطاقة الضريبية",
                        "TaxCardNum",
                        "FileTaxNumERR",
@@ -175,7 +175,7 @@ $getAll = getVal("*","stocks");
                  </div>
                  <div class="col-xl-6 col-lg-6 col-md-6">
                    <?php
-                   myFormInput(
+                   GENFun_Class\Fun_Class::myFormInput(
                      "رقم الملف الضريبي",
                      "FileTaxNum",
                      "FileTaxNumERR",
@@ -193,7 +193,7 @@ $getAll = getVal("*","stocks");
                <div class="row">
                  <div class="col-xl-6 col-lg-6 col-md-6">
                      <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        "رقم السجل التجاري",
                        "IndexNum",
                        "IndexNumERR",
@@ -205,7 +205,7 @@ $getAll = getVal("*","stocks");
                  </div>
                  <div class="col-xl-6 col-lg-6 col-md-6">
                    <?php
-                   myFormInput(
+                   GENFun_Class\Fun_Class::myFormInput(
                      "تاريخ التسجيل ",
                      "IndexDate",
                      "IndexDateERR",
@@ -220,7 +220,7 @@ $getAll = getVal("*","stocks");
                <div class="row">
                  <div class="col-xl-5 col-lg-5 col-md-5">
                       <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        " راس مال الشركة ( ارقام فقط )",
                        "CompCapitelNum",
                        "CapitelNumERR",
@@ -229,17 +229,17 @@ $getAll = getVal("*","stocks");
                        "required",
                        "text",
                        "",
-                       "000,000,000,000,000,000,000"
+                       "0,000,000,000,000,000,000,000"
                      );
                       ?>
                  </div>
                  <div class="col-xl-7 col-lg-7 col-md-7">
                    <?php
-                   myFormInput(
+                   GENFun_Class\Fun_Class::myFormInput(
                      "راس المال بالغة العربية",
                      "CompCapitellang",
                      "CapitellangERR",
-                     "فقط مليون جنيه مصري"
+                     "فقط ــــــــــــ جنيه مصري"
                    );
                     ?>
                  </div>
@@ -248,7 +248,7 @@ $getAll = getVal("*","stocks");
                 <div class="row">
                   <div class="col-xl-6 col-lg-6 col-md-6">
                       <?php
-                      myFormInput(
+                      GENFun_Class\Fun_Class::myFormInput(
                         "المساهمين ( ارقام فقط )",
                         "ownarrCount",
                         "ownarrCountERR",
@@ -260,7 +260,7 @@ $getAll = getVal("*","stocks");
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6">
                     <?php
-                    myFormInput(
+                    GENFun_Class\Fun_Class::myFormInput(
                       " المكتتبين ( ارقام فقط )",
                       "ownrsMokt",
                       "ownrsMoktERR",
@@ -283,7 +283,7 @@ $getAll = getVal("*","stocks");
                <div class="row">
                  <div class="col-xl-7">
                    <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        "عنوان الشركة",
                        "address",
                        "addressERR",
@@ -295,7 +295,7 @@ $getAll = getVal("*","stocks");
                  </div>
                  <div class="col-xl-5 col-lg-5 col-md-5">
                    <?php
-                     myFormInput(
+                     GENFun_Class\Fun_Class::myFormInput(
                        "Email",
                        "CompEmail",
                        "CompEmailERR",
@@ -311,7 +311,7 @@ $getAll = getVal("*","stocks");
               <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6">
                      <?php
-                    myFormInput(
+                    GENFun_Class\Fun_Class::myFormInput(
                       "رقم هاتف الشركة",
                       "CompPhoneNum1",
                       "CompPhoneNum1ERR",
@@ -326,7 +326,7 @@ $getAll = getVal("*","stocks");
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6">
                   <?php
-                  myFormInput(
+                  GENFun_Class\Fun_Class::myFormInput(
                     "رقم هاتف اضافي",
                     "CompPhoneNum2",
                     "CompPhoneNum2ERR",
@@ -444,7 +444,7 @@ $getAll = getVal("*","stocks");
       if ($id!==NULL)
         $NamerowCount = cHECKexist("ID","stocks","WHERE ID LIKE ?","",$id);
         if ($NamerowCount) {
-          $getAll = getOne("*","stocks","WHERE ID = ?","",$id);
+          $getAll = GENFun_Class\Fun_Class::getOne("*","stocks","WHERE ID = ?","",$id);
           $val = $getAll[0];
           ?>
 
@@ -460,7 +460,7 @@ $getAll = getVal("*","stocks");
                       <input type="hidden" name="id" value="<?php echo $val["ID"] ?>">
 
                       <?php
-                        myFormInput(
+                        GENFun_Class\Fun_Class::myFormInput(
                           "اسم الشركة",
                           "CompName",
                           "CompNameERR",
@@ -476,7 +476,7 @@ $getAll = getVal("*","stocks");
                        <div class="row">
                          <div class="col-xl-6 col-lg-6 col-md-6">
                              <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                "رئيس مجلس الإدارة",
                                "ownName",
                                "ownNameERR",
@@ -492,7 +492,7 @@ $getAll = getVal("*","stocks");
                          </div>
                          <div class="col-xl-6 col-lg-6 col-md-6">
                            <?php
-                           myFormInput(
+                           GENFun_Class\Fun_Class::myFormInput(
                              "أمين السر",
                              "aminName",
                              "aminNameERR",
@@ -511,7 +511,7 @@ $getAll = getVal("*","stocks");
                        <div class="row">
                          <div class="col-xl-6 col-lg-6 col-md-6">
                              <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                "رقم البطاقة الضريبية",
                                "TaxCardNum",
                                "FileTaxNumERR",
@@ -527,7 +527,7 @@ $getAll = getVal("*","stocks");
                          </div>
                          <div class="col-xl-6 col-lg-6 col-md-6">
                            <?php
-                           myFormInput(
+                           GENFun_Class\Fun_Class::myFormInput(
                              "رقم الملف الضريبي",
                              "FileTaxNum",
                              "FileTaxNumERR",
@@ -546,7 +546,7 @@ $getAll = getVal("*","stocks");
                        <div class="row">
                          <div class="col-xl-6 col-lg-6 col-md-6">
                              <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                "رقم السجل التجاري",
                                "IndexNum",
                                "IndexNumERR",
@@ -562,7 +562,7 @@ $getAll = getVal("*","stocks");
                          </div>
                          <div class="col-xl-6 col-lg-6 col-md-6">
                            <?php
-                           myFormInput(
+                           GENFun_Class\Fun_Class::myFormInput(
                              "تاريخ التسجيل ",
                              "IndexDate",
                              "IndexDateERR",
@@ -581,7 +581,7 @@ $getAll = getVal("*","stocks");
                        <div class="row">
                          <div class="col-xl-5 col-lg-5 col-md-5">
                               <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                " راس مال الشركة ( ارقام فقط )",
                                "CompCapitelNum",
                                "CapitelNumERR",
@@ -590,18 +590,18 @@ $getAll = getVal("*","stocks");
                                "required",
                                "text",
                                "",
-                               "000,000,000,000,000,000,000",
+                               "0,000,000,000,000,000,000,000",
                                "{$val["Capital"]}"
                              );
                               ?>
                          </div>
                          <div class="col-xl-7 col-lg-7 col-md-7">
                            <?php
-                           myFormInput(
+                           GENFun_Class\Fun_Class::myFormInput(
                              "راس المال بالغة العربية",
                              "CompCapitellang",
                              "CapitellangERR",
-                             "فقط مليون جنيه مصري",
+                             "فقط ــــــــــــ جنيه مصري",
                              "",
                              "",
                              "text",
@@ -616,7 +616,7 @@ $getAll = getVal("*","stocks");
                         <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-6">
                               <?php
-                              myFormInput(
+                              GENFun_Class\Fun_Class::myFormInput(
                                 "المساهمين ( ارقام فقط )",
                                 "ownarrCount",
                                 "ownarrCountERR",
@@ -632,7 +632,7 @@ $getAll = getVal("*","stocks");
                           </div>
                           <div class="col-xl-6 col-lg-6 col-md-6">
                             <?php
-                            myFormInput(
+                            GENFun_Class\Fun_Class::myFormInput(
                               " المكتتبين ( ارقام فقط )",
                               "ownrsMokt",
                               "ownrsMoktERR",
@@ -659,7 +659,7 @@ $getAll = getVal("*","stocks");
                        <div class="row">
                          <div class="col-xl-7">
                            <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                "عنوان الشركة",
                                "address",
                                "addressERR",
@@ -675,7 +675,7 @@ $getAll = getVal("*","stocks");
                          </div>
                          <div class="col-xl-5 col-lg-5 col-md-5">
                            <?php
-                             myFormInput(
+                             GENFun_Class\Fun_Class::myFormInput(
                                "Email",
                                "CompEmail",
                                "CompEmailERR",
@@ -694,7 +694,7 @@ $getAll = getVal("*","stocks");
                       <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6">
                              <?php
-                            myFormInput(
+                            GENFun_Class\Fun_Class::myFormInput(
                               "رقم هاتف الشركة",
                               "CompPhoneNum1",
                               "CompPhoneNum1ERR",
@@ -710,7 +710,7 @@ $getAll = getVal("*","stocks");
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6">
                           <?php
-                          myFormInput(
+                          GENFun_Class\Fun_Class::myFormInput(
                             "رقم هاتف اضافي",
                             "CompPhoneNum2",
                             "CompPhoneNum2ERR",

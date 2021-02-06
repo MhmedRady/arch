@@ -181,8 +181,8 @@ $('.body').fadeIn(1000);
       // $ID_1
       // $ID_2
 
-      $Phone1 = myImplode($Phone1,"-");
-      $Phone2 = myImplode($Phone2,"-");
+      $Phone1 = GENFun_Class\Fun_Class::myImplode($Phone1,"-");
+      $Phone2 = GENFun_Class\Fun_Class::myImplode($Phone2,"-");
 
 
       $Email = filter_var($Email,FILTER_SANITIZE_EMAIL);
@@ -216,7 +216,7 @@ $('.body').fadeIn(1000);
       }else {
         $NamerowCount = cHECKexist("ID","stocks","WHERE Name LIKE ?","",$Name);
         if ($NamerowCount) {
-          $getINdxNum = getOne("IndexNum","stocks","WHERE Name LIKE ?","",$Name);
+          $getINdxNum = GENFun_Class\Fun_Class::getOne("IndexNum","stocks","WHERE Name LIKE ?","",$Name);
           $GetIndex = $getINdxNum[0]["IndexNum"];
           $ERRORS[] = "هذه الشركة مسجلة من قبل وبرقم سجل تجاري => <strong class='text-dec'> {$GetIndex} </strong>";
         }
@@ -237,7 +237,7 @@ $('.body').fadeIn(1000);
       }else {
         $TCardrowCount = cHECKexist("ID","stocks","WHERE TaxCard LIKE ?","",$TCard);
         if ($TCardrowCount) {
-          $getTName = getOne("Name","stocks","WHERE TaxCard LIKE ?","",$TCard);
+          $getTName = GENFun_Class\Fun_Class::getOne("Name","stocks","WHERE TaxCard LIKE ?","",$TCard);
           $getTName = $getTName[0]["Name"];
           $ERRORS[] = "رقم البطاقة الضريبية مسجل من قبل لدي شركة => <strong class='text-dec'> {$getTName} </strong>";
         }
@@ -252,7 +252,7 @@ $('.body').fadeIn(1000);
         $TFilerowCount = cHECKexist("ID","stocks","WHERE TaxFile LIKE ?","",$TFile);
 
         if ($TFilerowCount) {
-          $getTFName = getOne("Name","stocks","WHERE TaxFile LIKE ?","",$TFile);
+          $getTFName = GENFun_Class\Fun_Class::getOne("Name","stocks","WHERE TaxFile LIKE ?","",$TFile);
           $getTFName = $getTFName[0]["Name"];
           print_r($TFilerowCount);
           $ERRORS[] = "رقم الملف الضريبي مستخد من قبل لركة => <strong class='text-dec'> {$getTFName} </strong>";
@@ -264,7 +264,7 @@ $('.body').fadeIn(1000);
       }else {
         $IndxNumrowCount = cHECKexist("ID","stocks","WHERE IndexNum LIKE ?","",$IndexNum);
           if ($IndxNumrowCount) {
-            $getINdxNum = getOne("Name","stocks","WHERE IndexNum LIKE ?","",$IndexNum);
+            $getINdxNum = GENFun_Class\Fun_Class::getOne("Name","stocks","WHERE IndexNum LIKE ?","",$IndexNum);
             $DName = $getINdxNum[0]["Name"];
             $ERRORS[] = "رقم السجل هذا مستخدم من قبل لشركة => <strong class='text-dec'> {$DName} </strong>";
           }
@@ -442,9 +442,9 @@ $('.body').fadeIn(1000);
     $setDB =  $set->rowCount();
 
     if ($setDB>0) {
-      myModal("اضافة شركة جديدة",'<div class="alert alert-info" role="alert">لقد تمت عملية اضافة شركة <strong> [ ' .$Name .' ] </strong> بنجاح </div>',"فتح الارشيف","goArch",$Name,"goArch('#ModalGo')");
+      GENFun_Class\Fun_Class::myModal("اضافة شركة جديدة",'<div class="alert alert-info" role="alert">لقد تمت عملية اضافة شركة <strong> [ ' .$Name .' ] </strong> بنجاح </div>',"فتح الارشيف","goArch",$Name,"goArch('#ModalGo')");
     }else {
-      myModal("اضافة شركة جديدة",'<div class="alert alert-info" role="alert"> لم يتم اضافة الشركة برجاء المحاولةالتأكد من البيانات ثم المحاول مرة اخري </div>');
+      GENFun_Class\Fun_Class::myModal("اضافة شركة جديدة",'<div class="alert alert-info" role="alert"> لم يتم اضافة الشركة برجاء المحاولةالتأكد من البيانات ثم المحاول مرة اخري </div>');
     }
 
     ?>
@@ -469,7 +469,7 @@ $('.body').fadeIn(1000);
         exec("EXPLORER /E,$path");
       }else {
         echo "not exist";
-        myModal("ارشيف " . $val,'<div class="alert alert-danger" role="alert">لا يمكن فتح ارشيف شركة '."<strong> [ {$val} ] </strong>".' ملف الشركة غير موجود</div>');
+        GENFun_Class\Fun_Class::myModal("ارشيف " . $val,'<div class="alert alert-danger" role="alert">لا يمكن فتح ارشيف شركة '."<strong> [ {$val} ] </strong>".' ملف الشركة غير موجود</div>');
         ?>
 
         <script type="text/javascript">
@@ -489,22 +489,14 @@ $('.body').fadeIn(1000);
 
           ?>
             <script type="text/javascript">
-              var errorCheckHelper = $("#NameCheckHelp");
-              var checkClass = $("#NameHelp");
-
-              if (checkClass.hasClass("erro")) {
-                errorCheckHelper.css("display","none");
-              }else {
-                  checkClass.addClass("checkError");
-                errorCheckHelper.delay(500).html('<i class="fa fa-times"></i>  ' + "هذا المستخدم غير موجود ").fadeIn(500);
-              }
-
+              var USInP = $("#exampleInputName");
+              USInP.addClass("checkError");
             </script>
           <?php
       }else {
         ?>
           <script type="text/javascript">
-            $("#NameHelp").removeClass("checkError");
+            $("#exampleInputName").removeClass("checkError");
           </script>
         <?php
       }
@@ -536,7 +528,7 @@ $('.body').fadeIn(1000);
       $post = $_POST["Fixed_Search"];
       $post = filter_var($post,FILTER_SANITIZE_STRING) ;
 
-        $get = getVal("Name,ID","stocks","WHERE Name LIKE '%$post%'","OR CEO LIKE '%$post%'");
+        $get = GENFun_Class\Fun_Class::getVal("Name,ID","stocks","WHERE Name LIKE '%$post%'","OR CEO LIKE '%$post%'");
         if (!empty($get)) {
           foreach ($get as $key => $value) {
             ?>

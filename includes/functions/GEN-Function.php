@@ -2,14 +2,18 @@
 
 /*
 =========================================
-=========== GENERAL FUNCTION ============
+=========== GENERAL public static function ============
 =========================================
 
-  **CHECK GETALL Function
+  **CHECK GETALL public static function
   ** Functhon to CHECK ALL FROM ANY DATABASE TABLE
 */
 
-  function getAlltable($name,$tablename, $where = NULL, $and = NULL, $orderby=NULL, $ordering = "DESC", $limit = 0){
+namespace GENFun_Class;
+
+final class Fun_Class {
+
+  public static function getAlltable($name,$tablename, $where = NULL, $and = NULL, $orderby=NULL, $ordering = "DESC", $limit = 0){
 
     global $con;
 
@@ -35,11 +39,11 @@
 
 /***********************************************/
 /*
-  **CHECK GETALL Function
+  **CHECK GETALL public static function
   ** Functhon to CHECK ALL FROM ANY DATABASE TABLE
 */
 
-function getVal($name,$tablename, $where = NULL, $and = NULL) {
+public static function getVal($name,$tablename, $where = NULL, $and = NULL) {
 
     global $con;
 
@@ -49,20 +53,28 @@ function getVal($name,$tablename, $where = NULL, $and = NULL) {
 
     $ONE = $getOne->fetchAll();
 
+    // return $this;
+
     return $ONE;
 
 }
 
 
+public static function HashPass($Pass)
+{
+  $hashPass = hash('sha256', $Pass);
+    return $hashPass;
+}
+
 
 /*  */
 
 /*
-  **GET ONE VALUE Function
+  **GET ONE VALUE public static function
   ** Functhon to CHECK ALL FROM ANY DATABASE TABLE
 */
 
-function getOne($name,$tablename, $where = NULL, $and = NULL,$Val) {
+public static function getOne($name,$tablename, $where = NULL, $and = NULL,$Val) {
 
     global $con;
 
@@ -79,10 +91,10 @@ function getOne($name,$tablename, $where = NULL, $and = NULL,$Val) {
 /*****************************************/
 
 /**
-// FUNCTION DELETE UNIT DATABASE
+// public static function DELETE UNIT DATABASE
  **/
 
-function DeleteData($table,$where,$del)
+public static function DeleteData($table,$where,$del)
 {
 
 global $con;
@@ -98,7 +110,7 @@ return $Deleted;
 /***********************************************/
 
 /*GET ARRANGE*/
-function getTid($select, $from, $by, $sort){
+public static function getTid($select, $from, $by, $sort){
 
   global $con;
 
@@ -114,7 +126,7 @@ function getTid($select, $from, $by, $sort){
 
 /*
 [ -1- ]
-  ** Count Number Of UNIT Function
+  ** Count Number Of UNIT public static function
   ** CALCULATE UNITS IN Row DATABASE
   ** 1- CALCULATE PARENT NUM IN CATEGORIES TABLE IN DATABASE
   *** 2- CAN USE IT FOR CALCULATE NUM OF MEMBERS RESGESTED DateTime [ ' >= 30 ' ]
@@ -123,7 +135,7 @@ function getTid($select, $from, $by, $sort){
   ****** $where = The GET VALUE To COUNT BY IT [ 'WHERE ID = $USR['UserID']' ]
 */
 
- function countof($from_row, $table,$where = NULL, $And=NULL){
+ public static function countof($from_row, $table,$where = NULL, $And=NULL){
 
      global $con;
 
@@ -137,7 +149,7 @@ function getTid($select, $from, $by, $sort){
 
 /*
 [ -1- ]
-  ** GET MANY DAYS Function
+  ** GET MANY DAYS public static function
   *** GET MANY OF DAYS FROM ADDED DATE TO TODAY
   **** $where = WHERE GET = {$row['CHECK']} => Date
   ***** [ 1 ] $select = CHECK NAME OF GET DATE UNIT
@@ -147,7 +159,7 @@ function getTid($select, $from, $by, $sort){
   ********* [ 5 ] $and = AND CHECK = | !=
 */
 
-function Diff($select,$date ,$from,$where = NULL, $and_1 = NULL,$and_2 = NULL){
+public static function Diff($select,$date ,$from,$where = NULL, $and_1 = NULL,$and_2 = NULL){
 
   global $con;
 
@@ -167,7 +179,7 @@ function Diff($select,$date ,$from,$where = NULL, $and_1 = NULL,$and_2 = NULL){
 //
 // $stmt->execute(array($userid));
 
-function update($value1, $value2 = NULL, $from ,$set ,$where = NULL){
+public static function update($value1, $value2 = NULL, $from ,$set ,$where = NULL){
 
   global $con;
 
@@ -196,26 +208,26 @@ function update($value1, $value2 = NULL, $from ,$set ,$where = NULL){
   *** GET TOTAL NUM OF $SUM
 */
 
-function sum($sum,$from,$where=NULL,$and=NULL){
+public static function sum($sum,$from,$where=NULL,$and=NULL){
   global $con;
   $stmt = $con->Prepare("SELECT SUM($sum) AS SUM FROM $from $where $and");
   $stmt->execute();
   $stmt = $stmt->fetchAll();
   return $stmt;
-};
+}
 
 /*****************************************/
 
-function myImplode($value = null,$Cut = null)
+public static function myImplode($value = null,$Cut = null)
 {
   return implode(explode($Cut,$value));
 }
 
 /**
-// FUNCTION GET CLIENT_IP
+// public static function GET CLIENT_IP
  **/
 
-function getIp() {
+public static function getIp() {
 
   $ip = "REMOTE_ADDR" . $_SERVER['REMOTE_ADDR'];
 
@@ -238,9 +250,9 @@ function getIp() {
 
 
  /**
-   // FUNCTION FROEACH ERROR
+   // public static function FROEACH ERROR
   **/
-  function eRRORaLert($ERROR=null)
+  public static function eRRORaLert($ERROR=null)
   {
 
     foreach ($ERROR as $key => $value) {
@@ -253,11 +265,11 @@ function getIp() {
   /*****************************************/
 
   /**
-    // FUNCTION CSRF REQUEST
+    // public static function CSRF REQUEST
    **/
 
 
- function  _CSRF()
+ public static function  _CSRF()
  {
    if (empty($_SESSION['key']))
  		$_SESSION['key'] = bin2hex(random_bytes(32));
@@ -269,10 +281,10 @@ function getIp() {
 /*****************************************/
 
 /**
-  // FUNCTION defult FORM INPUT
+  // public static function defult FORM INPUT
  **/
 
- function myFormInput($label = "Name",$InputID = "InputName",
+ public static function myFormInput($label = "Name",$InputID = "InputName",
   $Helper = "Name",$Place="Place",$inputClass = null, $require = null, $inpuType = "text",$onChange = null, $mask = null,$value=null
 
  )
@@ -291,10 +303,10 @@ function getIp() {
  /*****************************************/
 
 /**
-  // FUNCTION TAG CHANGES SETTINGS
+  // public static function TAG CHANGES SETTINGS
  **/
 
-  function myModal($title=null,$body=null,$GoBtn=null,$name=null,$val=null,$onClick = null,$GoLink=null)
+  public static function myModal($title=null,$body=null,$GoBtn=null,$name=null,$val=null,$onClick = null,$GoLink=null)
   {
     $GoLink = $GoLink !==null?'<a href="'. $GoLink .'">'. $GoBtn .'</a>':$GoBtn;
 
@@ -330,3 +342,5 @@ function getIp() {
 
     <?php
   }
+
+}

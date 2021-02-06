@@ -21,10 +21,10 @@
     // $Sup  = 'Startup/';
     $Des  = 'design/';
 
-    include $fun  . 'GEN-Function.php' ;
-    include $fun  . 'functions.php' ;
+    require $fun  . 'GEN-Function.php' ;
+    require $fun  . 'functions.php' ;
     include $lang . 'arb.php';
-    
+
 
     include $tpl  . 'Header.inc';
 

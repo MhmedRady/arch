@@ -89,7 +89,7 @@ $(this).fadeOut(1000);
 });
 
 $(".div_Search input").on("focus",function(){
-  
+
   $(".div_Search").animate({
     top: "-250px"
   });
@@ -167,14 +167,20 @@ $(".div_Search button").on("click",function(){
     err.html("");
   }
 
+  function errRegExp(VAL) {
+    var pat = new RegExp(/^[a-zA-Z]*$/);
+    var OutTest = pat.test(VAL);
+    return OutTest;
+  }
+
  REG = $("#regest");
 
   LOG.on("click",function(){
+
     PASS_VAL = $("#exampleInputPass").val();
-    var firstarray = ['1','2','3','4','5','6','7','8','9','0','۰', '۱', '۲', '۳', '٤','٥','٦','۸', '۹','/','*','!','<','>','(',')','.','-','+','=','÷','{','}','?',':',';','@','#','$','%','^','&','_','.','؟',' ',','];
 
     var fvalN = USER_INP.val().length,
-        fvalF = USER_INP.val();
+        USER_INP_VAL = USER_INP.val();
 
     if (PASS_VAL.length == 0 ) {
       PASS_STOP = true;
@@ -183,34 +189,24 @@ $(".div_Search button").on("click",function(){
       hideERR(PASS_ERR);
       PASS_STOP = false;
     }
-
+console.log("=>>>>> " + errRegExp(USER_INP_VAL));
     if (fvalN==0 ) {
+
       USER_STOP = true;
-      USER_ERR.addClass("erro");
       seeERR(USER_ERR,"لم يتم ادخال اسم المستخدم");
 
-    } else if (fvalN > 0 ) {
-          for (var i = 0; i < fvalN; i++) {
-              var fval = USER_INP.val().charAt(i);
-              var num = 0 ;
-             if ($.inArray(fval, firstarray) >= 0) {
-               var num = 1;
-             }else {
-               var num = 0;
-             }
-          if (num==0) {
-            USER_ERR.removeClass("erro");
-                hideERR(USER_ERR);
-                USER_STOP = false;
-           }else if (num==1) {
-             USER_ERR.addClass("erro");
-             seeERR(USER_ERR,"اسم المستخدم لا يحتوي علي '($+-/*.@#!~9-0)'");
-                   USER_STOP = true;
-                   return;
-              }
-          }
+    } else if (!errRegExp(USER_INP_VAL)) {
 
-    }else {
+       USER_ERR.addClass("erro");
+       seeERR(USER_ERR,"اسم المستخدم لا يحتوي علي '($+-/*.@#!~9-0)'");
+              USER_STOP = true;
+
+    }else if(USER_INP.hasClass("checkError")) {
+
+      USER_STOP = true;
+      seeERR(USER_ERR,"هذا المستخدم غير موجود ");
+
+    } else {
       hideERR(USER_ERR);
       USER_STOP = false;
     }
@@ -228,7 +224,7 @@ $(".div_Search button").on("click",function(){
     var firstarray = ['1','2','3','4','5','6','7','8','9','0','۰', '۱', '۲', '۳', '٤','٥','٦','۸', '۹','/','*','!','<','>','(',')','.','-','+','=','÷','{','}','?',':',';','@','#','$','%','^','&','_','.','؟',','];
 
     var fvalN = USER_INP.val().length,
-        fvalF = USER_INP.val();
+        USER_INP_VAL = USER_INP.val();
 
 
     if (PASS_INP_R_VAL.length == 0 || PASS_INP_VAL_2.length == 0) {
@@ -281,8 +277,7 @@ var LOGSUB = $("#LOGForm");
   LOGSUB.submit(function(event){
     console.log(USER_STOP,PASS_STOP);
     if (USER_STOP == true ||
-        PASS_STOP == true ||
-        $("#NameHelp").hasClass("checkError")
+        PASS_STOP == true
       ) {
         event.preventDefault();
     }

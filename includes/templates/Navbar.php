@@ -51,7 +51,7 @@
         <div class="collapse multi-collapse natfs_list_div" id="myNatfs_list">
           <div class="popover-arrow" style="position: absolute; left: 0px; transform: translate(129px);"></div>
           <div class="card card-body">
-            <?php $newUser = getVal("Name,Phone,Date","users","WHERE Gen_Group = 0")  ?>
+            <?php $newUser = GENFun_Class\Fun_Class::getVal("Name,Phone,Date","users","WHERE Gen_Group = 0")  ?>
             <?php foreach ($newUser as $key => $user): ?>
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action" aria-current="true">
